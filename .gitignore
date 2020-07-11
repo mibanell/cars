@@ -2,3 +2,4 @@ carsenv/
 data/
 .ipynb_checkpoints/
 .idea/
+__pycache__
