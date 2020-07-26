@@ -7,6 +7,25 @@ def preprocessing_fn(path, norm_params, na_encoding, brand_clusters, model_clust
     # Load files as pandas df
     data = pd.read_csv(path, index_col=None)
     norm_params = pd.read_csv(norm_params, encoding='cp1252', index_col=None)
+    model_clusters = pd.read_csv(model_clusters, encoding='cp1252', index_col=None)
+
+    # select variables
+    data = data.loc[:,['price','abtest','vehicleType','yearOfRegistration','gearbox','powerPS','model','kilometer','fuelType','brand','notRepairedDamage']]
+
+    # Fill NAs model, vehicle and fuel with 'NA'
+    data.vehicleType = data.vehicleType.fillna('_NA')
+    data.fuelType = data.fuelType.fillna('_NA')
+
+    # fill notRepairedDamage NAs with 'nein'
+    data.notRepairedDamage = data.notRepairedDamage.fillna('nein')
+    
+    # Add clustering column model
+    data = pd.merge(data, model_clusters, on=['model'], how='left')
+    data = data.drop(columns='model')
+    ## Add another cluster for the NAs
+    data.loc[data.cluster_model.isna(), 'cluster_model'] = model_clusters.cluster_model.max() + 1
+    data.cluster_model = data.cluster_model.astype('int')
+
 
     # Numerical features normalization
     for num_col in ['yearOfRegistration', 'powerPS', 'kilometer']:
