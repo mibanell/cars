@@ -3,4 +3,4 @@ data/
 .ipynb_checkpoints/
 .idea/
 __pycache__
-model/
+cars_model/
