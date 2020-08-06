@@ -4,3 +4,4 @@ data/
 .idea/
 __pycache__
 cars_model/
+node_modules/
