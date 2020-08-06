@@ -5,7 +5,7 @@ def preprocessing_fn(norm_params, model_clusters, data=None):
 
     # Load data as pandas df
     if isinstance(data, str):
-        data = pd.read_csv(data, index_col=None)
+        data = pd.read_csv(data, encoding='cp1252', index_col=None)
     elif isinstance(data, dict):
         data = pd.DataFrame(data)
     norm_params = pd.read_csv(norm_params, encoding='cp1252', index_col=None)
@@ -27,12 +27,17 @@ def preprocessing_fn(norm_params, model_clusters, data=None):
     data.brand = data.brand.astype('object')
     data.notRepairedDamage = data.notRepairedDamage.astype('object')
 
-    # Fill NAs model, vehicle and fuel with 'NA'
+    # Fill NAs vehicle, fuel and gearbox with 'NA'
     data.vehicleType = data.vehicleType.fillna('_NA')
+    data.loc[data.vehicleType == 'andere', 'vehicleType'] = '_NA'
     data.fuelType = data.fuelType.fillna('_NA')
+    data.loc[data.fuelType == 'andere', 'fuelType'] = '_NA'
+    data.gearbox = data.gearbox.fillna('_NA')
+    data.loc[data.gearbox == 'andere', 'gearbox'] = '_NA'
 
     # fill notRepairedDamage NAs with 'nein'
     data.notRepairedDamage = data.notRepairedDamage.fillna('nein')
+    data.loc[data.notRepairedDamage == 'andere', 'notRepairedDamage'] = 'nein'
     
     # Add clustering column model
     data = pd.merge(data, model_clusters, on=['model'], how='left')
@@ -49,4 +54,5 @@ def preprocessing_fn(norm_params, model_clusters, data=None):
         data[num_col] = ((data[num_col] - norm_params.loc[norm_params.feature == num_col, 'mean'].values) / \
                         norm_params.loc[norm_params.feature == num_col, 'std'].values).astype('float32')
         data[num_col] = data[num_col].astype('float32')
+        
     return data

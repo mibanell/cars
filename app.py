@@ -1,7 +1,7 @@
 from flask import Flask, request
 from flask_restful import Resource, Api
 
-import os
+import pandas as pd
 
 import tensorflow as tf
 from tensorflow.data import Dataset
@@ -37,18 +37,66 @@ class makePrediction(Resource):
             norm_params='data/numerical_features_normalization.csv',
             model_clusters='data/model_clusters.csv'
         )
-
+        print(data)
         # observation to dataset
         data = df_to_dataset(dataframe=data, target_name='price', batch_size=1)
         # make prediction
         prediction = model.predict(data)
 
-        print(prediction[0][0])
-
         return {'price': str(prediction[0][0])}
+
+class brands(Resource):
+    def get(self):
+        data = pd.read_csv('data/train.csv', encoding='cp1252', index_col=None)
+
+        return dict(enumerate(data.brand.unique()))
+
+class models(Resource):
+    def get(self):
+        brand = request.args['brand']
+        data = pd.read_csv('data/train.csv', encoding='cp1252', index_col=None)
+        brand_models = data.loc[data.brand == brand, 'model'].dropna().unique()
+        brand_models.sort()
+
+        return dict(enumerate(brand_models))
+
+class abtest(Resource):
+    def get(self):
+        return dict(enumerate(['control', 'test']))
+
+class vehicleType(Resource):
+    def get(self):
+        vtypes = ['limousine', 'cabrio', 'kleinwagen', 'bus', 'kombi', 'suv', 'coupe']
+        vtypes.sort()
+        vtypes.append('andere')
+        return dict(enumerate(vtypes))
+
+class gearbox(Resource):
+    def get(self):
+        return dict(enumerate(['automatik', 'manuell', 'andere']))
+
+class fuelType(Resource):
+    def get(self):
+        ftypes = ['diesel', 'benzin', 'lpg', 'cng', 'hybrid', 'elektro']
+        ftypes.sort()
+        ftypes.append('andere')
+        return dict(enumerate(ftypes))
+
+class notRepairedDamage(Resource):
+    def get(self):
+        return dict(enumerate(['ja', 'nein', 'andere']))
+
 
 
 api.add_resource(makePrediction, '/predict')
+api.add_resource(brands, '/brands')
+api.add_resource(models, '/models')
+api.add_resource(abtest, '/abtest')
+api.add_resource(vehicleType, '/vehicleType')
+api.add_resource(gearbox, '/gearbox')
+api.add_resource(fuelType, '/fuelType')
+api.add_resource(notRepairedDamage, '/notRepairedDamage')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
