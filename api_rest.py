@@ -1,7 +1,9 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
+from flask_cors import CORS
 
 import pandas as pd
+import json
 
 import tensorflow as tf
 from tensorflow.data import Dataset
@@ -9,7 +11,9 @@ from tensorflow.data import Dataset
 from preprocess_tf import preprocessing_fn
 
 app = Flask(__name__)
+CORS(app)
 api = Api(app)
+
 
 # load model
 model = tf.keras.models.load_model("cars_model")
@@ -49,7 +53,7 @@ class brands(Resource):
     def get(self):
         data = pd.read_csv('data/train.csv', encoding='cp1252', index_col=None)
 
-        return dict(enumerate(data.brand.unique()))
+        return jsonify([{'id': idx, 'value': value} for idx, value in enumerate(data.brand.unique())])
 
 class models(Resource):
     def get(self):
