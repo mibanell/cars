@@ -52,8 +52,9 @@ class makePrediction(Resource):
 class brands(Resource):
     def get(self):
         data = pd.read_csv('data/train.csv', encoding='cp1252', index_col=None)
-
-        return jsonify([{'id': idx, 'value': value} for idx, value in enumerate(data.brand.unique())])
+        brands = data.brand.unique()
+        brands.sort()
+        return jsonify([{'id': idx, 'value': value} for idx, value in enumerate(brands)])
 
 class models(Resource):
     def get(self):

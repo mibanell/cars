@@ -1,4 +1,6 @@
 import React from 'react';
+import onClickOutside from "react-onclickoutside";
+import './Dropdown.css';
 
 class Dropdown extends React.Component {
 
@@ -11,41 +13,56 @@ class Dropdown extends React.Component {
       items: this.props.items
     };
     this.toggle = () => this.setState({ open: !this.state.open });
-  }
+  };
 
   handleOnClick(item) {
     if(!this.state.selection.some(current => current.id === item.id)) {
-      this.setState({ selection: item });
+      this.setState({ selection: [item] });
     }
     this.setState({ open: false })
-  }
+  };
+
+  isSelected(item) {
+    if(this.state.selection.some(current => current.id === item.id)) {
+      return true
+    }
+    else {
+      return false
+    }
+  };
+
+  firstUpperCase(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1)
+  };
+
+  handleClickOutside = evt => {
+    this.setState({ open: false });
+  };
   
   render () {
     return (
       <div className="dd-wrapper">
         <div
         tabIndex={0}
-        className="dd-header"
+        className={this.state.open ? "dd-header highlight" : "dd-header"}
         role="button"
         onKeyPress={() => this.toggle()}
         onClick={() => this.toggle()}>
-          <div className="dd-header__title">
-            <p className="dd-header__title--bold">{this.state.title}</p>
-          </div>
-          <div className="dd-header__action">
-            <p>{this.state.open ? 'Close' : 'Open'}</p>
+          <div className="dd-header__title">{this.state.selection.length === 1 ? this.firstUpperCase(this.state.selection[0].value) : this.state.title}</div>
+          <div className="arrow-container">
+            <div className={this.state.open ? "arrow" : "arrow show-arrow"}></div>
           </div>
       </div>
       {this.state.open && (
-        <ul className="dd-list">
+        <div className="dd-list">
           {this.state.items.map(item => (
-            <li className="dd-list-item" key={item.id}>
-              <button type="button" onClick={() => this.handleOnClick(item)}>
-                <span>{item.value}</span>
+            <div className="dd-list-item" key={item.id}>
+              <button className={this.isSelected(item) ? "selected" : null} type="button" onClick={() => this.handleOnClick(item)}>
+                <span>{this.firstUpperCase(item.value)}</span>
               </button>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
       </div>
     );
@@ -55,5 +72,5 @@ class Dropdown extends React.Component {
 
 
 
-export default Dropdown;
+export default onClickOutside(Dropdown);
 

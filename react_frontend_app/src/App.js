@@ -14,7 +14,6 @@ class App extends Component {
     }
   }
   
-
   componentDidMount() {
 
     fetch('http://127.0.0.1:5000/brands')
@@ -41,7 +40,7 @@ class App extends Component {
     else {
       return(
         <div className="App">
-          <Dropdown title="Dropdown" items= { brands }/>
+          <Dropdown title="Brands" items= { brands }/>
         </div>
       );
     }
