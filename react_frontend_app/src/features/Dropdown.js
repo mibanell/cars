@@ -7,10 +7,8 @@ class Dropdown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: this.props.title,
       open: false,
-      selection: [],
-      items: this.props.items
+      selection: []
     };
     this.toggle = () => this.setState({ open: !this.state.open });
   };
@@ -18,6 +16,7 @@ class Dropdown extends React.Component {
   handleOnClick(item) {
     if(!this.state.selection.some(current => current.id === item.id)) {
       this.setState({ selection: [item] });
+      this.props.parentCallback([item]);
     }
     this.setState({ open: false })
   };
@@ -42,20 +41,21 @@ class Dropdown extends React.Component {
   render () {
     return (
       <div className="dd-wrapper">
+        <div className="dd-title">{ this.props.title }</div>
         <div
         tabIndex={0}
         className={this.state.open ? "dd-header highlight" : "dd-header"}
         role="button"
         onKeyPress={() => this.toggle()}
         onClick={() => this.toggle()}>
-          <div className="dd-header__title">{this.state.selection.length === 1 ? this.firstUpperCase(this.state.selection[0].value) : this.state.title}</div>
+          <div className="dd-header__title">{this.state.selection.length === 1 ? this.firstUpperCase(this.state.selection[0].value) : this.props.textLabel}</div>
           <div className="arrow-container">
             <div className={this.state.open ? "arrow" : "arrow show-arrow"}></div>
           </div>
       </div>
       {this.state.open && (
         <div className="dd-list">
-          {this.state.items.map(item => (
+          {this.props.items.map(item => (
             <div className="dd-list-item" key={item.id}>
               <button className={this.isSelected(item) ? "selected" : null} type="button" onClick={() => this.handleOnClick(item)}>
                 <span>{this.firstUpperCase(item.value)}</span>

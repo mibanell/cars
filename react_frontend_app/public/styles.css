@@ -1,12 +1,52 @@
 #root {
     width: 100%;
+    overflow: hidden;
     height: 100vh;
-    background-color: rgb(244, 249, 253);
+    background-color: #f8faff;
 }
 
-#price-estimator-container {
-    padding-top: 60px;
-    width: 1000px;
+::-webkit-scrollbar {
+    width: 5px;
+  }
+scrollbar-width: thin;
+/* Track */
+::-webkit-scrollbar-track {
+    background: #ffffff;
+    border-radius: 7px;
+  }
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #e7e7e7;
+    border-radius: 5px;
+  }
+
+/*
+
+Header
+
+*/
+
+#header {
+    background-image: url("./www/background.jpg");
+    background-position: center 70%;
+    width: 100%;
+}
+
+#header-color {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background: linear-gradient(90deg, #2f006f40 0%, #02356140 100%);
+}
+
+#app-name {
     margin-left: auto;
     margin-right: auto;
+    font-size: 25px;
+    width: 600px;
+    text-align: center;
+    font-weight: 500;
+    color: #ffffff;
+    font-family: 'Open Sans', sans-serif;
 }
+
+

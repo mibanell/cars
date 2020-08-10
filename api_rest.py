@@ -63,7 +63,7 @@ class models(Resource):
         brand_models = data.loc[data.brand == brand, 'model'].dropna().unique()
         brand_models.sort()
 
-        return dict(enumerate(brand_models))
+        return jsonify([{'id': idx, 'value': value} for idx, value in enumerate(brand_models)])
 
 class abtest(Resource):
     def get(self):
