@@ -27,9 +27,11 @@ Header
 */
 
 #header {
-    background-image: url("./www/background.jpg");
+    background: linear-gradient(90deg, #374dd5 0%, #9656ff 100%);
     background-position: center 70%;
     width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 #header-color {
@@ -38,15 +40,45 @@ Header
     background: linear-gradient(90deg, #2f006f40 0%, #02356140 100%);
 }
 
+#header-content {
+  width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #app-name {
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 25px;
-    width: 600px;
+    font-size: 40px;
+    width: 100%;
     text-align: center;
-    font-weight: 500;
+    font-weight: 600;
     color: #ffffff;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Titillium Web', sans-serif;
+}
+
+#car-image {
+  background-image: url(www/purepng.com-fordfordcarfodr-carvehicle-170152748438280o5t.png);
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 100px;
+  background-size: 200px;
+  background-position: center top;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#car-image-color {
+  background-color: #6752ea16;
+  width: 100%;
+  height: 100%;
 }
 
 
+
+
+#price-estimator-container {
+  padding-top: 20px;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}

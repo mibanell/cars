@@ -57,7 +57,7 @@
 .dd-list {
     position: absolute;
     width: 200px;
-    max-height: 300px;
+    max-height: 250px;
     overflow-y: scroll;
     z-index: 10;
     margin-top: 7px;

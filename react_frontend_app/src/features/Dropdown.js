@@ -31,7 +31,13 @@ class Dropdown extends React.Component {
   };
 
   firstUpperCase(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1)
+    if(isNaN(string)) {
+      console.log(string);
+      return string.charAt(0).toUpperCase() + string.slice(1)
+    }
+    else {
+      return(string)
+    }
   };
 
   handleClickOutside = evt => {
