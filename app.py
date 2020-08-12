@@ -67,7 +67,7 @@ class models(Resource):
 
 class abtest(Resource):
     def get(self):
-        return dict(enumerate(['control', 'test']))
+        return jsonify([{'id': idx, 'value': value} for idx, value in enumerate(['control', 'test'])])
 
 class vehicleType(Resource):
     def get(self):
@@ -78,14 +78,15 @@ class vehicleType(Resource):
 
 class gearbox(Resource):
     def get(self):
-        return dict(enumerate(['automatik', 'manuell', 'andere']))
+        return jsonify([{'id': idx, 'value': value} for idx, value in enumerate(['andere', 'automatik', 'manuell'])])
 
 class fuelType(Resource):
     def get(self):
         ftypes = ['diesel', 'benzin', 'lpg', 'cng', 'hybrid', 'elektro']
         ftypes.sort()
-        ftypes.append('andere')
-        return dict(enumerate(ftypes))
+        ftypes = ['andere'] + ftypes
+
+        return jsonify([{'id': idx, 'value': value} for idx, value in enumerate(ftypes)])
 
 class notRepairedDamage(Resource):
     def get(self):

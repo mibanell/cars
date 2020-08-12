@@ -1,4 +1,7 @@
-
+.input-text {
+    width: 100%;
+    margin-bottom: 20px;
+}
 
 .input-text input {
     color: #656565;
@@ -7,6 +10,7 @@
     border: #d8d8d8 1px solid;
     cursor: pointer;
     outline: none;
+    width: calc(100% - 32px);
     height: 35px;
     line-height: 35px;
     text-align: left;

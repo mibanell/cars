@@ -3,6 +3,7 @@
     overflow: hidden;
     height: 100vh;
     background-color: #f8faff;
+    display: flex;
 }
 
 ::-webkit-scrollbar {
@@ -20,6 +21,14 @@ scrollbar-width: thin;
     border-radius: 5px;
   }
 
+
+
+
+.column {
+  width: calc(100%/3);
+  height: 100%;
+}
+
 /*
 
 Header
@@ -28,10 +37,9 @@ Header
 
 #header {
     background: linear-gradient(90deg, #374dd5 0%, #9656ff 100%);
-    background-position: center 70%;
-    width: 100%;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    height: 100%;
 }
 
 #header-color {
@@ -40,14 +48,15 @@ Header
     background: linear-gradient(90deg, #2f006f40 0%, #02356140 100%);
 }
 
-#header-content {
-  width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+#header-container {
+  width: 100%;
+  padding-top: 100px;
+  background: linear-gradient(180deg, rgba(92,0,219,1) 0%, rgba(141,44,237,1) 100%);
+  height: 100%;
 }
 
 #app-name {
-    font-size: 40px;
+    font-size: 70px;
     width: 100%;
     text-align: center;
     font-weight: 600;
@@ -58,11 +67,11 @@ Header
 #car-image {
   background-image: url(www/purepng.com-fordfordcarfodr-carvehicle-170152748438280o5t.png);
   background-repeat: no-repeat;
-  width: 200px;
-  height: 100px;
-  background-size: 200px;
+  width: 300px;
+  height: 150px;
+  background-size: 300px;
   background-position: center top;
-  margin-top: 10px;
+  margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -73,12 +82,21 @@ Header
   height: 100%;
 }
 
+/*
 
+Features
 
+*/
 
-#price-estimator-container {
-  padding-top: 20px;
-  width: 1000px;
+#features-container {
+  height: 100%;
+  width: 400px;
+  padding-top: 50px;
   margin-left: auto;
   margin-right: auto;
+}
+
+#price-container {
+  height: 100%;
+  background-color: rgb(224, 224, 224);
 }

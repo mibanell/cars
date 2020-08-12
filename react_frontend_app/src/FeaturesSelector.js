@@ -13,8 +13,14 @@ class FeaturesSelector extends Component {
       brands: [],
       models: [],
       years: [],
+      fuels: [],
+      gearboxes: [],
+      repairedOpts: [],
       selectedBrand: [],
       selectedModel: [],
+      selectedFuel: [],
+      selectedGearbox: [],
+      selectedRepairedOpts: []
     }
   }
 
@@ -26,6 +32,15 @@ class FeaturesSelector extends Component {
   };
   setYearState = (selectedYear) => {
     this.setState({selectedYear: selectedYear});
+  };
+  setFuelState = (selectedFuel) => {
+    this.setState({selectedFuel: selectedFuel});
+  };
+  setGearboxState = (selectedGearbox) => {
+    this.setState({selectedGearbox: selectedGearbox});
+  };
+  setRepairedState = (selectedRepairedOpts) => {
+    this.setState({selectedRepairedOpts: selectedRepairedOpts});
   };
 
 
@@ -47,7 +62,37 @@ class FeaturesSelector extends Component {
       list.push({"id": j, "value": i});
       j += 1;
     }
-    this.setState({ years: list })
+    this.setState({ years: list });
+
+    fetch('http://127.0.0.1:5000/fuelType')
+        .then(res => res.json())
+        .then(json => {
+            this.setState({
+                fuels: json
+            })
+        }).catch((err) => {
+            console.log(err);
+        });
+
+    fetch('http://127.0.0.1:5000/gearbox')
+    .then(res => res.json())
+    .then(json => {
+        this.setState({
+            gearboxes: json
+        })
+    }).catch((err) => {
+        console.log(err);
+    });
+
+    fetch('http://127.0.0.1:5000/notRepairedDamage')
+    .then(res => res.json())
+    .then(json => {
+        this.setState({
+            repairedOpts: json
+        })
+    }).catch((err) => {
+        console.log(err);
+    });
 
   }
 
@@ -76,8 +121,15 @@ class FeaturesSelector extends Component {
         <div id="features-list">
           <Dropdown title="Brand" textLabel="Select brand" items= { this.state.brands } parentCallback = { this.setBrandState }/>
           <Dropdown title="Model" textLabel="Select model" items= { this.state.models } parentCallback = { this.setModelState }/>
+          <br></br>
           <Dropdown title="Year of registration" textLabel="Select year" items= { this.state.years } parentCallback = { this.setYearState }/>
+          <br></br>
           <TextInput title="Power" placeholder="Set power" />
+          <Dropdown title="Fuel type" textLabel="Select fuel type" items= { this.state.fuels } parentCallback = { this.setFuelState }/>
+          <Dropdown title="Gearbox" textLabel="Select gearbox" items= { this.state.gearboxes } parentCallback = { this.setGearboxState }/>
+          <br></br>
+          <TextInput title="Kilometers" placeholder="Set kilometers" />
+          <Dropdown title="Has been repaired" textLabel="Select option" items= { this.state.repairedOpts } parentCallback = { this.setRepairedState }/>
         </div>
       </div>
     );
