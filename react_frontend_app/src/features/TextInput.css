@@ -5,14 +5,14 @@
 
 .input-text input {
     color: #656565;
-    background-color: #ffffff;
+    background-color: #f5f5f5;
     border-radius: 7px;
     border: #d8d8d8 1px solid;
-    cursor: pointer;
+    cursor: text;
     outline: none;
     width: calc(100% - 32px);
-    height: 35px;
-    line-height: 35px;
+    height: 30px;
+    line-height: 30px;
     text-align: left;
     font-size: 13px;
     padding-left: 15px;
