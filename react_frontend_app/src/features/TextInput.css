@@ -1,6 +1,7 @@
 .input-text {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 12px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .input-text input {
@@ -23,10 +24,10 @@
 }
 
 .input-text-title {
-    font-size: 14px;
+    font-size: 13px;
     color: #000000;
     font-weight: 600;
-    margin-bottom: 7px;
+    margin-bottom: 5px;
 }
 
 .input-text input:focus {

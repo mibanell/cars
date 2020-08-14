@@ -119,17 +119,21 @@ class FeaturesSelector extends Component {
       <div className="FeaturesSelector">
         <div id="features-title">Select the car features</div>
         <div id="features-list">
-          <Dropdown title="Brand" textLabel="Select brand" items= { this.state.brands } parentCallback = { this.setBrandState }/>
-          <Dropdown title="Model" textLabel="Select model" items= { this.state.models } parentCallback = { this.setModelState }/>
-          <br></br>
-          <Dropdown title="Year of registration" textLabel="Select year" items= { this.state.years } parentCallback = { this.setYearState }/>
-          <br></br>
-          <TextInput title="Power" placeholder="Set power" />
-          <Dropdown title="Fuel type" textLabel="Select fuel type" items= { this.state.fuels } parentCallback = { this.setFuelState }/>
-          <Dropdown title="Gearbox" textLabel="Select gearbox" items= { this.state.gearboxes } parentCallback = { this.setGearboxState }/>
-          <br></br>
-          <TextInput title="Kilometers" placeholder="Set kilometers" />
-          <Dropdown title="Has been repaired" textLabel="Select option" items= { this.state.repairedOpts } parentCallback = { this.setRepairedState }/>
+          <Dropdown title="Brand" textLabel="" items= { this.state.brands } parentCallback = { this.setBrandState }/>
+          <Dropdown title="Model" textLabel="" items= { this.state.models } parentCallback = { this.setModelState }/>
+          <Dropdown title="Year of registration" textLabel= "" items= { this.state.years } parentCallback = { this.setYearState }/>
+          <TextInput title="Power" placeholder="" />
+          <Dropdown title="Fuel type" textLabel="" items= { this.state.fuels } parentCallback = { this.setFuelState }/>
+          <Dropdown title="Gearbox" textLabel="" items= { this.state.gearboxes } parentCallback = { this.setGearboxState }/>
+          <TextInput title="Kilometers" placeholder="" />
+          <Dropdown title="Has been repaired" textLabel="" items= { this.state.repairedOpts } parentCallback = { this.setRepairedState }/>
+        </div>
+        <div id="button-container">
+          <div class="separator-button"></div>
+          <div id="calculate-button">
+            <div id="calculate-button-text">Calculate price</div>
+          </div>
+          <div class="separator-button"></div>
         </div>
       </div>
     );

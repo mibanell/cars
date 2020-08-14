@@ -90,7 +90,7 @@ class fuelType(Resource):
 
 class notRepairedDamage(Resource):
     def get(self):
-        return dict(enumerate(['ja', 'nein', 'andere']))
+        return jsonify([{'id': idx, 'value': value} for idx, value in enumerate(['andere', 'ja', 'nein'])])
 
 
 

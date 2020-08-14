@@ -23,15 +23,15 @@ def getModel(data, dp_rate, hu):
         for header in ['yearOfRegistration', 'powerPS', 'kilometer']:
             feature_columns.append(set_numerical_feature(header))
 
-        feature_columns.append(set_one_hot_feature('abtest', data))
+        #feature_columns.append(set_one_hot_feature('abtest', data))
 
-        feature_columns.append(set_one_hot_feature('vehicleType', data))
+        #feature_columns.append(set_one_hot_feature('vehicleType', data))
 
         feature_columns.append(set_one_hot_feature('gearbox', data))
 
         feature_columns.append(set_one_hot_feature('fuelType', data))
 
-        feature_columns.append(set_one_hot_feature('brand', data))
+        #feature_columns.append(set_one_hot_feature('brand', data))
 
         feature_columns.append(set_one_hot_feature('cluster_model', data))
 
@@ -46,19 +46,14 @@ def getModel(data, dp_rate, hu):
         featureColumns(data=data),
         layers.Dense(hu),
         layers.Activation('relu'),
-        layers.Dropout(rate=dp_rate),
         layers.Dense(hu),
         layers.Activation('relu'),
-        layers.Dropout(rate=dp_rate),
         layers.Dense(hu),
         layers.Activation('relu'),
-        layers.Dropout(rate=dp_rate),
         layers.Dense(hu),
         layers.Activation('relu'),
-        layers.Dropout(rate=dp_rate),
         layers.Dense(hu),
         layers.Activation('relu'),
-        layers.Dropout(rate=dp_rate),
         layers.Dense(hu),
         layers.Activation('relu'),
         layers.Dense(1, activation='relu')
