@@ -14,7 +14,9 @@ class TextInput extends React.Component {
     }
 
     handleChange(event) {
+        console.log(event.target.value);
         this.setState({value: event.target.value});
+        this.props.parentCallback([event.target.value]);
     }
 
     handleSubmit(event) {
@@ -25,9 +27,6 @@ class TextInput extends React.Component {
     render() {
         return (
             <div className="input-text">
-                <div className="input-text-title">
-                    {this.props.title}
-                </div>
                 <input type="number" placeholder={this.props.placeholder} onChange={this.handleChange}/>
             </div>
             

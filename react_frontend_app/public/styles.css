@@ -1,32 +1,37 @@
 #root {
     width: 100%;
-    overflow: hidden;
-    height: 100vh;
+    min-width: 1100px;
+    overflow-y: scroll;
+    min-height: 100vh;
     background: linear-gradient(90deg, #374dd5 0%, #9656ff 100%);
     display: flex;
 }
 
 ::-webkit-scrollbar {
     width: 5px;
-  }
+}
 scrollbar-width: thin;
 /* Track */
 ::-webkit-scrollbar-track {
     background: #ffffff;
     border-radius: 7px;
-  }
+}
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #e7e7e7;
     border-radius: 5px;
-  }
+}
 
 
 
 
 .column {
-  width: 50%;
-  height: 100%;
+    width: 50%;
+}
+
+.fixed {
+    position: fixed;
+    right: 30px;
 }
 
 /*
@@ -49,9 +54,9 @@ Header
 }
 
 #header-container {
-  width: 100%;
-  padding-top: 100px;
-  height: 100%;
+    width: 100%;
+    padding-top: 100px;
+    height: 100%;
 }
 
 #app-name {
@@ -64,21 +69,22 @@ Header
 }
 
 #car-image {
-  background-image: url(www/purepng.com-fordfordcarfodr-carvehicle-170152748438280o5t.png);
-  background-repeat: no-repeat;
-  width: 300px;
-  height: 150px;
-  background-size: 300px;
-  background-position: center top;
-  margin-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
+    background-image: url(www/car-white.png);
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    width: 300px;
+    height: 150px;
+    background-size: 300px;
+    background-position: center top;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #car-image-color {
-  background-color: #6752ea16;
-  width: 100%;
-  height: 100%;
+    background-color: #6752ea16;
+    width: 100%;
+    height: 100%;
 }
 
 /*
@@ -88,13 +94,9 @@ Features
 */
 
 #features-container {
-  height: 92%;
-  max-height: 780px;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
-.separator {
-  width: 100%;
-  height: 4%;
-}
 
 

@@ -46,7 +46,6 @@ class Dropdown extends React.Component {
   render () {
     return (
       <div className="dd-wrapper">
-        <div className="dd-title">{ this.props.title }</div>
         <div
         tabIndex={0}
         className={this.state.open ? "dd-header highlight" : "dd-header"}

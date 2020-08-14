@@ -18,6 +18,8 @@ class FeaturesSelector extends Component {
       repairedOpts: [],
       selectedBrand: [],
       selectedModel: [],
+      selectedYear: [],
+      selectedPower: [],
       selectedFuel: [],
       selectedGearbox: [],
       selectedRepairedOpts: []
@@ -33,14 +35,48 @@ class FeaturesSelector extends Component {
   setYearState = (selectedYear) => {
     this.setState({selectedYear: selectedYear});
   };
+  setPowerState = (selectedPower) => {
+    this.setState({selectedPower: selectedPower});
+  };
   setFuelState = (selectedFuel) => {
     this.setState({selectedFuel: selectedFuel});
   };
   setGearboxState = (selectedGearbox) => {
     this.setState({selectedGearbox: selectedGearbox});
   };
+  setKilometersState = (selectedKilometers) => {
+    this.setState({selectedKilometers: selectedKilometers});
+  };
   setRepairedState = (selectedRepairedOpts) => {
     this.setState({selectedRepairedOpts: selectedRepairedOpts});
+  };
+  
+
+  makePrediction() {
+    var model = this.state.selectedModel[0].value;
+    var yearOfRegistration = this.state.selectedYear[0].value;
+    var powerPS = this.state.selectedPower[0];
+    var fuelType = this.state.selectedFuel[0].value;
+    var gearbox = this.state.selectedGearbox[0].value;
+    var kilometer = this.state.selectedKilometers[0];
+    var notRepairedDamage = this.state.selectedRepairedOpts[0].value;
+    
+
+    var url = 'http://127.0.0.1:5000/predict?';
+    url = url +
+        'model=' + model +
+        '&yearOfRegistration=' + yearOfRegistration +
+        '&powerPS=' + powerPS +
+        '&fuelType=' + fuelType +
+        '&gearbox=' + gearbox +
+        '&kilometer=' + kilometer +
+        '&notRepairedDamage=' + notRepairedDamage
+    console.log(url);
+    fetch(url)
+        .then(res => res.json())
+        .then(json => {
+            console.log(json)
+        })
   };
 
 
@@ -119,21 +155,21 @@ class FeaturesSelector extends Component {
       <div className="FeaturesSelector">
         <div id="features-title">Select the car features</div>
         <div id="features-list">
-          <Dropdown title="Brand" textLabel="" items= { this.state.brands } parentCallback = { this.setBrandState }/>
-          <Dropdown title="Model" textLabel="" items= { this.state.models } parentCallback = { this.setModelState }/>
-          <Dropdown title="Year of registration" textLabel= "" items= { this.state.years } parentCallback = { this.setYearState }/>
-          <TextInput title="Power" placeholder="" />
-          <Dropdown title="Fuel type" textLabel="" items= { this.state.fuels } parentCallback = { this.setFuelState }/>
-          <Dropdown title="Gearbox" textLabel="" items= { this.state.gearboxes } parentCallback = { this.setGearboxState }/>
-          <TextInput title="Kilometers" placeholder="" />
-          <Dropdown title="Has been repaired" textLabel="" items= { this.state.repairedOpts } parentCallback = { this.setRepairedState }/>
+          <Dropdown title="" textLabel="Brand" items= { this.state.brands } parentCallback = { this.setBrandState }/>
+          <Dropdown title="" textLabel="Model" items= { this.state.models } parentCallback = { this.setModelState }/>
+          <Dropdown title="" textLabel= "Year of registration" items= { this.state.years } parentCallback = { this.setYearState }/>
+          <TextInput title="" placeholder="Power" parentCallback = { this.setPowerState }/>
+          <Dropdown title="" textLabel="Fuel type" items= { this.state.fuels } parentCallback = { this.setFuelState }/>
+          <Dropdown title="" textLabel="Gearbox" items= { this.state.gearboxes } parentCallback = { this.setGearboxState }/>
+          <TextInput title="" placeholder="Kilometers" parentCallback = { this.setKilometersState }/>
+          <Dropdown title="" textLabel="Has been repaired" items= { this.state.repairedOpts } parentCallback = { this.setRepairedState }/>
         </div>
         <div id="button-container">
-          <div class="separator-button"></div>
-          <div id="calculate-button">
+          <div className="separator-button"></div>
+          <div id="calculate-button" onClick={() => this.makePrediction()}>
             <div id="calculate-button-text">Calculate price</div>
           </div>
-          <div class="separator-button"></div>
+          <div className="separator-button"></div>
         </div>
       </div>
     );

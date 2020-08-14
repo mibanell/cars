@@ -3,7 +3,7 @@
     position: relative;
     width: 100%;
     font-family: 'Open Sans', sans-serif;
-    margin-bottom: 12px;
+    margin-bottom: 20px;
 }
 
 .dd-title {
@@ -14,10 +14,10 @@
 }
 
 .dd-header {
-    color: #656565;
-    background-color: #f5f5f5;
+    color: #9168d2;
+    background-color: #f9f7ff;
     border-radius: 7px;
-    border: #d8d8d8 1px solid;
+    border: #ba8fff 1px solid;
     cursor: pointer;
     outline: none;
     height: 30px;
@@ -32,7 +32,7 @@
 }
 
 .dd-header.highlight {
-    color: #bdbdbd;
+    color: #d1bcf3;
     border: #a490e4 1px solid;
 }
 

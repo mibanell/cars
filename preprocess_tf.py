@@ -12,24 +12,19 @@ def preprocessing_fn(norm_params, model_clusters, data=None):
     model_clusters = pd.read_csv(model_clusters, encoding='cp1252', index_col=None)
 
     # select variables
-    data = data.loc[:,['price','abtest','vehicleType','yearOfRegistration','gearbox','powerPS','model','kilometer','fuelType','brand','notRepairedDamage']]
+    data = data.loc[:,['price','yearOfRegistration','gearbox','powerPS','model','kilometer','fuelType','notRepairedDamage']]
 
     # set data types
     data.price = data.price.astype('int32')
-    data.abtest = data.abtest.astype('object')
-    data.vehicleType = data.vehicleType.astype('object')
     data.yearOfRegistration = data.yearOfRegistration.astype('int32')
     data.gearbox = data.gearbox.astype('object')
     data.powerPS = data.powerPS.astype('int32')
     data.model = data.model.astype('object')
     data.kilometer = data.kilometer.astype('int32')
     data.fuelType = data.fuelType.astype('object')
-    data.brand = data.brand.astype('object')
     data.notRepairedDamage = data.notRepairedDamage.astype('object')
 
     # Fill NAs vehicle, fuel and gearbox with 'NA'
-    data.vehicleType = data.vehicleType.fillna('_NA')
-    data.loc[data.vehicleType == 'andere', 'vehicleType'] = '_NA'
     data.fuelType = data.fuelType.fillna('_NA')
     data.loc[data.fuelType == 'andere', 'fuelType'] = '_NA'
     data.gearbox = data.gearbox.fillna('_NA')
