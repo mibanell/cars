@@ -26,13 +26,13 @@ def preprocessing_fn(norm_params, model_clusters, data=None):
 
     # Fill NAs vehicle, fuel and gearbox with 'NA'
     data.fuelType = data.fuelType.fillna('_NA')
-    data.loc[data.fuelType == 'andere', 'fuelType'] = '_NA'
+    data.loc[data.fuelType == 'other', 'fuelType'] = '_NA'
     data.gearbox = data.gearbox.fillna('_NA')
-    data.loc[data.gearbox == 'andere', 'gearbox'] = '_NA'
+    data.loc[data.gearbox == 'other', 'gearbox'] = '_NA'
 
-    # fill notRepairedDamage NAs with 'nein'
-    data.notRepairedDamage = data.notRepairedDamage.fillna('nein')
-    data.loc[data.notRepairedDamage == 'andere', 'notRepairedDamage'] = 'nein'
+    # fill notRepairedDamage NAs with 'no'
+    data.notRepairedDamage = data.notRepairedDamage.fillna('no')
+    data.loc[data.notRepairedDamage == 'other', 'notRepairedDamage'] = 'no'
     
     # Add clustering column model
     data = pd.merge(data, model_clusters, on=['model'], how='left')

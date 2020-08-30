@@ -8,7 +8,7 @@ class Dropdown extends React.Component {
     super(props);
     this.state = {
       open: false,
-      selection: []
+      selection: this.props.initalSelection
     };
     this.toggle = () => this.setState({ open: !this.state.open });
   };
@@ -42,13 +42,19 @@ class Dropdown extends React.Component {
   handleClickOutside = evt => {
     this.setState({ open: false });
   };
+
+  componentDidUpdate(prevProps, prevState) {
+      if(this.props.items !== prevProps.items) {
+        this.setState({selection: this.props.initalSelection});
+      }
+  };
   
   render () {
     return (
       <div className="dd-wrapper">
         <div
         tabIndex={0}
-        className={this.state.open ? "dd-header highlight" : "dd-header"}
+        className={"dd-header" + (this.state.open ? " highlight" : (this.props.items.length > 0 ? (this.state.selection.length === 1 ? " selected" : ""): " not-clickable"))}
         role="button"
         onKeyPress={() => this.toggle()}
         onClick={() => this.toggle()}>

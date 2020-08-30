@@ -65,40 +65,27 @@ class models(Resource):
 
         return jsonify([{'id': idx, 'value': value} for idx, value in enumerate(brand_models)])
 
-class abtest(Resource):
-    def get(self):
-        return jsonify([{'id': idx, 'value': value} for idx, value in enumerate(['control', 'test'])])
-
-class vehicleType(Resource):
-    def get(self):
-        vtypes = ['limousine', 'cabrio', 'kleinwagen', 'bus', 'kombi', 'suv', 'coupe']
-        vtypes.sort()
-        vtypes.append('andere')
-        return dict(enumerate(vtypes))
-
 class gearbox(Resource):
     def get(self):
-        return jsonify([{'id': idx, 'value': value} for idx, value in enumerate(['andere', 'automatik', 'manuell'])])
+        return jsonify([{'id': idx, 'value': value} for idx, value in enumerate(['other', 'automatic', 'manual'])])
 
 class fuelType(Resource):
     def get(self):
-        ftypes = ['diesel', 'benzin', 'lpg', 'cng', 'hybrid', 'elektro']
+        ftypes = ['diesel', 'gasoline', 'autogas', 'natural gas', 'hybrid', 'electric']
         ftypes.sort()
-        ftypes = ['andere'] + ftypes
+        ftypes = ['other'] + ftypes
 
         return jsonify([{'id': idx, 'value': value} for idx, value in enumerate(ftypes)])
 
 class notRepairedDamage(Resource):
     def get(self):
-        return jsonify([{'id': idx, 'value': value} for idx, value in enumerate(['andere', 'ja', 'nein'])])
+        return jsonify([{'id': idx, 'value': value} for idx, value in enumerate(['other', 'yes', 'no'])])
 
 
 
 api.add_resource(makePrediction, '/predict')
 api.add_resource(brands, '/brands')
 api.add_resource(models, '/models')
-api.add_resource(abtest, '/abtest')
-api.add_resource(vehicleType, '/vehicleType')
 api.add_resource(gearbox, '/gearbox')
 api.add_resource(fuelType, '/fuelType')
 api.add_resource(notRepairedDamage, '/notRepairedDamage')

@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import FeaturesSelector from './FeaturesSelector';
+import MainComp from './main-comp/MainComp';
 import * as serviceWorker from './serviceWorker';
 
+
+
 ReactDOM.render(
-  <FeaturesSelector/>,
-  document.getElementById('features-container')
+  <MainComp/>,
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

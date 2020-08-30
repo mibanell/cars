@@ -14,7 +14,7 @@
 }
 
 .dd-header {
-    color: #9168d2;
+    color: #b69dde;
     background-color: #f9f7ff;
     border-radius: 7px;
     border: #ba8fff 1px solid;
@@ -36,12 +36,29 @@
     border: #a490e4 1px solid;
 }
 
+.dd-header.not-clickable {
+    pointer-events: none;
+    background-color: #fcfbff;
+    border: #dbcbf5 1px solid;
+    color: #dbcbf5;
+}
+
+.dd-header.selected {
+    color: #9168d2;
+    font-weight: 600;
+}
+
+.dd-header.not-clickable .arrow {
+    border: solid #dbcbf5;
+    border-width: 0 1px 1px 0;
+}
+
 
 .arrow-container {
     margin-top: -3px;
 }
 .arrow {
-    border: solid #656565;
+    border: solid #ba8fff;
     border-width: 0 1px 1px 0;
     display: none;
     padding: 1px;
@@ -91,7 +108,7 @@
 }
 
 .dd-list-item button:hover {
-    background-color: #f6f8ff;
+    background-color: #f5f3ff;
 }
 
 button.selected, button.selected {
