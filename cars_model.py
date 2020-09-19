@@ -23,15 +23,9 @@ def getModel(data, dp_rate, hu):
         for header in ['yearOfRegistration', 'powerPS', 'kilometer']:
             feature_columns.append(set_numerical_feature(header))
 
-        #feature_columns.append(set_one_hot_feature('abtest', data))
-
-        #feature_columns.append(set_one_hot_feature('vehicleType', data))
-
         feature_columns.append(set_one_hot_feature('gearbox', data))
 
         feature_columns.append(set_one_hot_feature('fuelType', data))
-
-        #feature_columns.append(set_one_hot_feature('brand', data))
 
         feature_columns.append(set_one_hot_feature('cluster_model', data))
 
