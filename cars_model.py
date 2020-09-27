@@ -19,7 +19,7 @@ def getModel(data, dp_rate, hu):
     def featureColumns(data):
         feature_columns = []
 
-        # numeric cols
+        # numeric cols MABG
         for header in ['yearOfRegistration', 'powerPS', 'kilometer']:
             feature_columns.append(set_numerical_feature(header))
 

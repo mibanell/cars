@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import FeaturesSelector from '../features/FeaturesSelector';
 import PriceDisplay from '../price/PriceDisplay';
 import './MainComp.css';
-
+/*MABG*/
 
 class MainComp extends Component {
     constructor(props) {
