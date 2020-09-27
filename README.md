@@ -3,13 +3,13 @@
 
 ### [By Miguel Ángel Ballester Granell](https://github.com/miguelangelbg)
 
-The aim of this project was to create a complete machine learning prototype going from the exploratory data analysis to the model deployment and user interface development.
+The purpose of this project was to create a complete machine learning prototype going from the exploratory data analysis to the model deployment and user interface development.
 
 In this repository you can find:
-* Exploratory Data Analysis
-* Neural network development with TensorFlow
-* REST API model deployment with Flask
-* React frontend
+1. Exploratory Data Analysis
+2. Neural network development with TensorFlow
+3. REST API model deployment with Flask
+4. React frontend
 
 ![Example](img/cars.gif)
 
