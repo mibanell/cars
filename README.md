@@ -1,7 +1,5 @@
-# How much is my car worth? 
+# How much is my car worth? 🚗🚗🚗💰💰💰
 ## Prototype of a price prediction solution for second hand cars
-
-### [By Miguel Ángel Ballester Granell](https://github.com/miguelangelbg)
 
 The purpose of this project was to create a complete machine learning prototype going from the exploratory data analysis to the model deployment and user interface development.
 
