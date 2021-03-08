@@ -8,10 +8,10 @@
 The purpose of this project was to create a complete machine learning prototype going from the exploratory data analysis to the model deployment and user interface development.
 
 In this repository you can find:
-1. Exploratory Data Analysis
-2. Neural network development with TensorFlow
-3. REST API model deployment with Flask
-4. React frontend
+1. [Exploratory Data Analysis](https://github.com/miguelangelbg/cars/blob/master/eda.ipynb)
+2. [Neural network development with TensorFlow](https://github.com/miguelangelbg/cars/blob/master/train_model.ipynb)
+3. [REST API model deployment with Flask](https://github.com/miguelangelbg/cars/blob/master/app.py)
+4. [React frontend](https://github.com/miguelangelbg/cars/tree/master/react_frontend_app)
 
 
 
