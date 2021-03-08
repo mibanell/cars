@@ -13,5 +13,15 @@ In this repository you can find:
 3. [REST API model deployment with Flask](https://github.com/miguelangelbg/cars/blob/master/app.py)
 4. [React frontend](https://github.com/miguelangelbg/cars/tree/master/react_frontend_app)
 
+## Author
 
-
+<p align="center">
+  <a href="https://github.com/miguelangelbg">
+    <img  src="img/avatar_500_round.png" width="100">
+  </a>
+</p>
+<p align="center">
+    <a href="https://github.com/miguelangelbg">Miguel Ángel Ballester Granell</a>
+    <br>
+    <a href="https://www.linkedin.com/in/miguelangelballestergranell/">LinkedIn</a>
+</p>
