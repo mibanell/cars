@@ -17,7 +17,7 @@ In this repository you can find:
 
 <p align="center">
   <a href="https://github.com/miguelangelbg">
-    <img  src="img/avatar_500_round.png" width="100">
+    <img  src="img/signature.png" width="100">
   </a>
 </p>
 <p align="center">
