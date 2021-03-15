@@ -15,13 +15,13 @@ In this repository you can find:
 
 ## Author
 
-<p align="center">
-  <a href="https://github.com/miguelangelbg">
+<p align="center" style="margin-top: 30px;">
+  <a href="https://github.com/mibanell">
     <img  src="img/signature.png" width="100">
   </a>
 </p>
 <p align="center">
-    <a href="https://github.com/miguelangelbg">Miguel Ángel Ballester Granell</a>
+    <a href="https://github.com/mibanell">Miguel Ángel Ballester Granell</a>
     <br>
     <a href="https://www.linkedin.com/in/miguelangelballestergranell/">LinkedIn</a>
 </p>
