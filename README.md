@@ -15,7 +15,8 @@ In this repository you can find:
 
 ## Author
 
-<p align="center" style="margin-top: 30px;">
+<br>
+<p align="center">
   <a href="https://github.com/mibanell">
     <img  src="img/signature.png" width="100">
   </a>
